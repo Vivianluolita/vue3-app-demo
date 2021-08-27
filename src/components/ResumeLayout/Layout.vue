@@ -5,22 +5,22 @@
       <el-button class="add" type="success" @click="add"
         >增加一个模块</el-button
       >
+      <!-- <van-button type="primary">复制代码</van-button> -->
     </div>
     <div class="menu-wrap" >
-      <WorkExp
+      <!-- <WorkExp
         v-for="item in ids"
         :item="item"
         :isCurrent="current.id === item.id"
         :key="item.id"
         @current="currentChange"
-      />
+      /> -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {  defineComponent,ref } from "vue";
-import WorkExp from "../ResumeItem/WorkExp.vue";
 const Component = defineComponent({
   setup(){
       let ids = ref(1);
@@ -30,9 +30,7 @@ const Component = defineComponent({
       current
     }
   },
-  components: {
-    WorkExp,
-  },
+
   mounted(){
 
   },
@@ -48,7 +46,7 @@ const Component = defineComponent({
 export default Component
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .layout-container {
   width: 100%;
   height: 100%;

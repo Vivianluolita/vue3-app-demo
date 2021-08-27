@@ -24,64 +24,16 @@ const Component = defineComponent({
     },
   },
   setup() {
-    const interact = inject("interact");
+    // const interact = inject("interact");
     const isActive = ref(false);
     // expose to template
     return {
-      interact,
+      // interact,
       isActive,
     };
   },
   mounted() {
-    this.interact(".work-item")
-      .resizable({
-        // resize from all edges and corners
-        edges: { left: true, right: true, bottom: true, top: true },
-        listeners: {
-          move(event) {
-            var target = event.target;
-            var x = parseFloat(target.getAttribute("data-x")) || 0;
-            var y = parseFloat(target.getAttribute("data-y")) || 0;
-
-            // update the element's style
-            target.style.width = event.rect.width + "px";
-            target.style.height = event.rect.height + "px";
-
-            // translate when resizing from top or left edges
-            x += event.deltaRect.left;
-            y += event.deltaRect.top;
-
-            target.style.transform = "translate(" + x + "px," + y + "px)";
-
-            target.setAttribute("data-x", x);
-            target.setAttribute("data-y", y);
-          },
-        },
-        modifiers: [
-          // keep the edges inside the parent
-          this.interact.modifiers.restrictEdges({
-            outer: "parent",
-          }),
-
-          // minimum size
-          this.interact.modifiers.restrictSize({
-            min: { width: 100, height: 50 },
-          }),
-        ],
-
-        inertia: true,
-      })
-      .draggable({
-        listeners: { move: globalThis.dragMoveListener },
-        inertia: true,
-        modifiers: [
-          this.interact.modifiers.restrictRect({
-            restriction: "parent",
-            endOnly: true,
-          }),
-        ],
-      });
-  },
+ },
   methods: {
     mouseover() {
       this.isActive = true;
@@ -91,7 +43,7 @@ const Component = defineComponent({
 export default Component;
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .work-item {
   width: 4rem;
   border-radius: 0.2rem;
