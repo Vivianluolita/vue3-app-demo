@@ -27,6 +27,7 @@ import { useRouter } from 'vue-router'
       const state = reactive({
         transitionName: 'slide-left'
       })
+      // 添加不同层级路由动画效果，同层级没有动画，to.meta.index
       router.beforeEach((to, from) => {
         if (to.meta.index > from.meta.index) {
           state.transitionName = 'slide-left' // 向左滑动
